@@ -91,7 +91,7 @@ void main() {
 #endif
 
 #ifdef RENDER_LINE_BORDER
-    float edgeBlur = (1.5 + 1.0 / u_device_pixel_ratio);
+    float edgeBlur = (u_border_width + 1.0 / u_device_pixel_ratio);
     float alpha2 = clamp(min(dist - (v_width2.t - edgeBlur), v_width2.s - dist) / edgeBlur, 0.0, 1.0);
     if (alpha2 < 1.) {
         out_color.rgb *= (0.6  + 0.4 * smoothstep(0.6, 1.0, alpha2));
