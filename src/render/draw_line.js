@@ -28,6 +28,7 @@ export default function drawLine(painter: Painter, sourceCache: SourceCache, lay
     const width = layer.paint.get('line-width');
     if (opacity.constantOr(1) === 0 || width.constantOr(1) === 0) return;
 
+    const borderWidth = layer.paint.get('line-border-width').constantOr(0.0);
     const depthMode = painter.depthModeForSublayer(0, DepthMode.ReadOnly);
     const colorMode = painter.colorModeForRenderPass();
     const pixelRatio = (painter.terrain && painter.terrain.renderingToTexture) ? 1.0 : browser.devicePixelRatio;
@@ -103,7 +104,7 @@ export default function drawLine(painter: Painter, sourceCache: SourceCache, lay
         const matrix = painter.terrain ? coord.projMatrix : null;
         const uniformValues = image ?
             linePatternUniformValues(painter, tile, layer, crossfade, matrix, pixelRatio) :
-            lineUniformValues(painter, tile, layer, crossfade, matrix, bucket.lineClipsArray.length, pixelRatio, [trimStart, trimEnd]);
+            lineUniformValues(painter, tile, layer, crossfade, matrix, bucket.lineClipsArray.length, pixelRatio, [trimStart, trimEnd], borderWidth);
 
         if (gradient) {
             const layerGradient = bucket.gradients[layer.id];

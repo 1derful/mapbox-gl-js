@@ -4784,11 +4784,12 @@
       },
       "property-type": "data-driven"
     },
-    "line-border": {
-      "type": "boolean",
-      "doc": "If true, the line will have a border",
-      "default": false,
-      "transition": false,
+    "line-border-width": {
+      "type": "number",
+      "doc": "The width of the line border. A value of Zero means no border.",
+      "default": 0.0,
+      "minimum": 0.0,
+      "transition": true,
       "sdk-support": {
         "basic functionality": {
           "js": "2.3.0",
@@ -4804,7 +4805,7 @@
         }
       },
       "expression": {
-        "interpolated": false,
+        "interpolated": true,
         "parameters": [
           "zoom",
           "feature",

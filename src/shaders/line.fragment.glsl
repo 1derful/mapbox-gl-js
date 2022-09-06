@@ -19,6 +19,8 @@ varying vec2 v_tex_b;
 uniform sampler2D u_gradient_image;
 #endif
 
+uniform float u_border_width;
+
 #pragma mapbox: define highp vec4 color
 #pragma mapbox: define lowp float floorwidth
 #pragma mapbox: define lowp vec4 dash_from
